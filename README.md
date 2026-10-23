@@ -13,6 +13,26 @@ A simulation-based robotics project that brings together joint-space control, Ca
 - Trained SAC policies for Reach, Grasp-and-Lift, and complete Pick-and-Place, including Grasp-policy initialization for Pick-and-Place fine-tuning.
 - Identified a gap between **the RL environment's success flag** and **stable physical release** using a paired 100-case benchmark. The gap is reported rather than hidden.
 
+## Demonstrations
+
+### Scripted Expert Pick-and-Place
+
+The scripted controller performs grasping, lifting, transferring, placing, and releasing in MuJoCo.
+
+![Scripted Expert Pick-and-Place](videos/stage4_random.gif)
+
+[Watch the full Expert demonstration](videos/stage4_random.mp4)
+
+### SAC Pick-and-Place
+
+The trained SAC policy performs the Pick-and-Place task using deterministic inference.
+
+![SAC Pick-and-Place](videos/sac_pickplace.gif)
+
+[Watch the full SAC demonstration](videos/sac_pickplace.mp4)
+
+*All demonstrations are performed in MuJoCo simulation.*
+
 ## Main result: unified physical Pick-and-Place benchmark
 
 The scripted expert and a selected SAC Pick-and-Place checkpoint were tested on the **same 100 paired initial cube XY offsets**, sampled within **±4 cm** per axis (offset-generator seed **45000**). Both were evaluated using the same contact/state thresholds. After each controller stopped, its **last arm and gripper control targets were held fixed** while MuJoCo advanced for an additional **1 second**; the final physical state was then checked independently of the SAC reward and termination flag.
