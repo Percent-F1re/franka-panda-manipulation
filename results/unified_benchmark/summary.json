@@ -1,0 +1,51 @@
+{
+  "rules": {
+    "min_lift_mm": 40.0,
+    "min_transfer_mm": 35.0,
+    "xy_tol_mm": 20.0,
+    "z_tol_mm": 10.0,
+    "speed_tol_m_s": 0.03,
+    "drift_tol_mm": 10.0,
+    "event_dwell_s": 0.12,
+    "post_observation_s": 1.0,
+    "drift_window_s": 0.6
+  },
+  "episodes_per_method": 100,
+  "methods": {
+    "expert": {
+      "n": 100,
+      "unified_success_count": 100,
+      "unified_success_rate": 1.0,
+      "wilson_95_success_rate": [
+        0.9630065017930143,
+        1.0
+      ],
+      "unified_lift_rate": 1.0,
+      "unified_transfer_rate": 1.0,
+      "unified_stable_place_rate": 1.0,
+      "mean_final_xy_error_mm_all": 0.09771062999999999,
+      "mean_task_sim_time_s": 22.0,
+      "mean_post_drift_mm": 0.0
+    },
+    "sac": {
+      "n": 100,
+      "unified_success_count": 78,
+      "unified_success_rate": 0.78,
+      "wilson_95_success_rate": [
+        0.6892964648501421,
+        0.8499871761539459
+      ],
+      "unified_lift_rate": 1.0,
+      "unified_transfer_rate": 1.0,
+      "unified_stable_place_rate": 0.78,
+      "mean_final_xy_error_mm_all": 5.456534489999999,
+      "mean_task_sim_time_s": 3.3915999999999995,
+      "mean_post_drift_mm": 0.14036698
+    }
+  },
+  "checkpoint": "models/sac_pickplace_best.zip (source result path omitted for privacy)",
+  "offset_seed": 45000,
+  "range_m": 0.04,
+  "sac_max_episode_steps": 600,
+  "post_intervention": "Hold the last joint and gripper commands for 1s; no policy/expert action, no teleport."
+}

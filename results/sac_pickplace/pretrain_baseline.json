@@ -1,0 +1,10 @@
+{
+  "contact_rate": 1.0,
+  "lift_rate": 1.0,
+  "transfer_rate": 1.0,
+  "place_rate": 0.0,
+  "mean_return": 28.557603651620973,
+  "mean_steps": 600.0,
+  "mean_max_cube_rise_mm": 305.49264205173074,
+  "mean_final_xy_error_mm": 380.8348702689245
+}

@@ -1,0 +1,11 @@
+{
+  "min_lift_mm": 40.0,
+  "min_transfer_mm": 35.0,
+  "xy_tol_mm": 20.0,
+  "z_tol_mm": 10.0,
+  "speed_tol_m_s": 0.03,
+  "drift_tol_mm": 10.0,
+  "event_dwell_s": 0.12,
+  "post_observation_s": 1.0,
+  "drift_window_s": 0.6
+}

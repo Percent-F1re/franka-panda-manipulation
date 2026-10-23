@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "episodes_requested": 50,
+    "episodes_completed": 50,
+    "seed": 42,
+    "offset_range_m": 0.04,
+    "transfer_offset_xy_m": [
+      0.0,
+      0.06
+    ],
+    "xy_success_tolerance_mm": 20.0,
+    "note": "fixed expert parameters copied from working Stage 3"
+  },
+  "grasp_success_count": 50,
+  "grasp_success_rate": 1.0,
+  "transfer_success_count": 50,
+  "transfer_success_rate": 1.0,
+  "place_success_count": 50,
+  "place_success_rate": 1.0,
+  "mean_final_xy_error_mm_all": 0.09520242778350184,
+  "median_final_xy_error_mm_all": 0.09163840749045513,
+  "max_final_xy_error_mm_all": 0.1361998062123841,
+  "mean_final_xy_error_mm_success_only": 0.09520242778350184,
+  "failure_reason_counts": {},
+  "expert_data_saved": false
+}

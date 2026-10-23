@@ -1,0 +1,51 @@
+
+# Python caches and local virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Local secrets and editor/OS files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Third-party MuJoCo Menagerie assets
+/mujoco_menagerie/
+
+# Raw training outputs and intermediate checkpoints
+# Selected weights belong in /models/
+# Curated experiment results belong in /results/
+
+/sac_pickplace/results_grasp/
+/sac_pickplace/results_pickplace/
+/sac_pickplace/results_benchmark/
+/sac_reach/**/results*/
+
+/checkpoints/
+/runs/
+/tensorboard/
+*.log
+
+# Uncurated large arrays and replay buffers
+*.npz
+*.npy
+*.pkl
+*.pt
+*.pth
+
+# Intentionally NOT ignored:
+# /models/
+# /results/
+# /pickplace_stage4_results/
+# /videos/
+# *.zip

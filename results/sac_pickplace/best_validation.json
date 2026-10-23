@@ -1,0 +1,11 @@
+{
+  "timesteps": 375000,
+  "contact_rate": 1.0,
+  "lift_rate": 1.0,
+  "transfer_rate": 1.0,
+  "place_rate": 1.0,
+  "mean_return": 73.05189045553736,
+  "mean_steps": 75.7,
+  "mean_max_cube_rise_mm": 75.0027178409596,
+  "mean_final_xy_error_mm": 3.4352302885207657
+}

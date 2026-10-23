@@ -1,0 +1,9 @@
+{
+  "model": "models/sac_grasp_best.zip",
+  "episodes": 50,
+  "test_seed_start": 2027,
+  "success_count": 50,
+  "success_rate": 1.0,
+  "mean_max_cube_rise_mm": 64.09942190830735,
+  "mean_min_grasp_distance_mm": 4.2585654877760435
+}

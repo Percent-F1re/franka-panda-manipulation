@@ -1,0 +1,11 @@
+{
+  "steps": 300000,
+  "seed": 42,
+  "max_episode_steps": 350,
+  "eval_every": 25000,
+  "eval_episodes": 20,
+  "learning_starts": 5000,
+  "device": "auto",
+  "out": null,
+  "output_directory":  "results_grasp/seed_42"
+}

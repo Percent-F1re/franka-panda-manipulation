@@ -1,0 +1,12 @@
+{
+  "checkpoint": "D:\\zhuomian\\实习项目\\robot_simulation\\sac_pickplace\\results_pickplace\\seed_42\\best_model.zip",
+  "episodes": 50,
+  "first_test_seed": 30000,
+  "contact_rate": 1.0,
+  "lift_rate": 1.0,
+  "transfer_rate": 1.0,
+  "place_rate": 1.0,
+  "mean_episode_steps": 76.96,
+  "mean_final_cube_xy_error_mm_all": 5.430104969014549,
+  "mean_final_cube_xy_error_mm_successes": 5.430104969014549
+}

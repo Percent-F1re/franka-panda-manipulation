@@ -1,0 +1,20 @@
+{
+  "pretrained": "results_grasp/seed_42/best_model.zip",
+  "steps": 500000,
+  "seed": 42,
+  "max_episode_steps": 600,
+  "eval_every": 25000,
+  "eval_episodes": 20,
+  "eval_seed": 10000,
+  "learning_starts": 1000,
+  "device": "auto",
+  "out": null,
+  "no_baseline": false,
+  "source_checkpoint": "D:\\zhuomian\\实习项目\\robot_simulation\\sac_pickplace\\results_grasp\\seed_42\\best_model.zip",
+  "output_directory": "D:\\zhuomian\\实习项目\\robot_simulation\\sac_pickplace\\results_pickplace\\seed_42",
+  "task": "pickplace",
+  "observations": "46D simulator state from PandaPickPlaceEnv",
+  "actions": "4D Cartesian increment + gripper target, DLS low-level control",
+  "replay_buffer": "NEW empty buffer; old Lift replay not loaded",
+  "note": "First 1000 (or user-set learning-starts) actions are random SB3 exploration"
+}
