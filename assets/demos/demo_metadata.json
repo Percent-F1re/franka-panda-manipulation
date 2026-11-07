@@ -1,0 +1,49 @@
+{
+  "recording_kind": "representative successful cases (selection bias; not performance statistics)",
+  "model_sha256": "a53c08aa014630de807dffb376e04dc2a185fccb42ea6d5fcdaf1e7969ae9d5f",
+  "seed_start": 42000,
+  "case_index": 1,
+  "same_xy_offset_for_modes": [
+    -0.014797319770491351,
+    -0.0049091368173379835
+  ],
+  "selection_success_checks": {
+    "dls": true,
+    "osc": true
+  },
+  "video_fps": 25,
+  "gif_sample_stride": 2,
+  "post_hold": "target",
+  "episodes": [
+    {
+      "controller": "dls",
+      "seed": 42000,
+      "case_index": 1,
+      "xy_offset_m": [
+        -0.014797319770491351,
+        -0.0049091368173379835
+      ],
+      "video_mp4": "sac_dls.mp4",
+      "video_gif": "sac_dls.gif",
+      "trace_csv": "sac_dls_case_001_trace.csv",
+      "sim_steps": 74,
+      "unified_success": true,
+      "final_xy_error_mm": 2.021256
+    },
+    {
+      "controller": "osc",
+      "seed": 42000,
+      "case_index": 1,
+      "xy_offset_m": [
+        -0.014797319770491351,
+        -0.0049091368173379835
+      ],
+      "video_mp4": "sac_osc.mp4",
+      "video_gif": "sac_osc.gif",
+      "trace_csv": "sac_osc_case_001_trace.csv",
+      "sim_steps": 60,
+      "unified_success": true,
+      "final_xy_error_mm": 10.254845
+    }
+  ]
+}

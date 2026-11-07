@@ -17,6 +17,30 @@ Exact paired McNemar p-value: **0.690** (not statistically significant). Same or
 
 Original MuJoCo vs robosuite Menagerie DLS same-action maximum end-effector difference was approximately **0.084 mm** in the analyzed episode.
 
+<!-- ROBOSUITE_README_MEDIA_START -->
+## Demonstrations (frozen original SAC)
+
+Both examples use the **same original 46D-to-4D SAC policy** and the **same seeded cube offset**. The low-level controllers run independent closed-loop rollouts. A case is selected only if **both pass the unified physical audit**, including the one-second post-action check. These are illustrative successful episodes, **not representative success-rate estimates**.
+
+| SAC + original DLS position control | SAC + robosuite OSC torque control |
+|:---:|:---:|
+| ![DLS Pick-and-Place demo](assets/demos/sac_dls.gif) | ![OSC Pick-and-Place demo](assets/demos/sac_osc.gif) |
+| [Full MP4 demo](assets/demos/sac_dls.mp4) | [Full MP4 demo](assets/demos/sac_osc.mp4) |
+
+## Experimental results at a glance
+
+**Zero-shot robustness: unified physical Pick-and-Place success rate** — 100 paired cases per scenario and controller. Vertical whiskers show Wilson 95% confidence intervals.
+
+![DLS and OSC physical success rates in seven domain-randomization scenarios](assets/plots/robustness_success_rate.png)
+
+**Placement accuracy under domain randomization** — mean final cube XY error across all 100 cases in each scenario, not just successful cases.
+
+![Mean cube XY error for DLS and OSC across seven scenarios](assets/plots/robustness_xy_error.png)
+
+The frozen SAC achieved **84% (DLS) vs 81% (OSC)** success under the nominal distribution, decreasing to **58% vs 53%** in the stronger combined perturbation. DLS and OSC do not show a statistically significant success-rate difference in the paired baseline comparison (exact McNemar p = 0.690). This is a **fixed SAC zero-shot controller swap** in a custom robosuite `MujocoEnv` using the original Menagerie Panda model, not the default robosuite Panda or a vision/real-robot benchmark. See [the complete V3 analysis](results/V3_ROBUSTNESS_RESULTS.md).
+
+<!-- ROBOSUITE_README_MEDIA_END -->
+
 ## System
 
 ```text
