@@ -1,0 +1,27 @@
+{
+  "description": "User-reported DLS/OSC fixed SAC 100-pair evaluation, seed 42000, frozen Menagerie Panda model",
+  "status": "validated on user's Windows setup; logs are not included in this patch",
+  "episodes": 100,
+  "seed": 42000,
+  "dls": {
+    "unified_successes": 84,
+    "original_successes": 99,
+    "unified_lift": 100,
+    "unified_transfer": 100,
+    "mean_final_xy_error_mm": 5.56300486
+  },
+  "osc": {
+    "unified_successes": 81,
+    "original_successes": 95,
+    "unified_lift": 99,
+    "unified_transfer": 99,
+    "mean_final_xy_error_mm": 14.4572089
+  },
+  "paired": {
+    "both_success": 70,
+    "dls_only_success": 14,
+    "osc_only_success": 11,
+    "neither_success": 5,
+    "exact_mcnemar_p_two_sided": 0.6900379657745361
+  }
+}

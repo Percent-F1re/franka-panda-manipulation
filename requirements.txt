@@ -1,7 +1,0 @@
-# Unpinned for portability. For exact reproduction, document the tested versions.
-numpy
-scipy
-matplotlib
-mujoco>=2.3.3
-gymnasium
-stable-baselines3

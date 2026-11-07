@@ -1,0 +1,51 @@
+{
+  "baseline": {
+    "description": "Exact V2 comparison baseline: nominal mass/friction, cube initial XY +/-0.04m, fixed target offset (0,+0.06)m",
+    "mass_scale": [1.0, 1.0],
+    "friction_scale": [1.0, 1.0],
+    "object_xy_half_range_m": 0.04,
+    "target_xy_half_range_m": 0.0
+  },
+  "mass_random": {
+    "description": "Cube mass and inertia scaled together, 0.6..1.4x",
+    "mass_scale": [0.6, 1.4],
+    "friction_scale": [1.0, 1.0],
+    "object_xy_half_range_m": 0.04,
+    "target_xy_half_range_m": 0.0
+  },
+  "friction_random": {
+    "description": "All cube/table/finger-pad contact friction coefficients scaled 0.5..1.5x",
+    "mass_scale": [1.0, 1.0],
+    "friction_scale": [0.5, 1.5],
+    "object_xy_half_range_m": 0.04,
+    "target_xy_half_range_m": 0.0
+  },
+  "object_position_wide": {
+    "description": "Cube XY uniform +/-0.06m instead of +/-0.04m; target remains cube+(0,+0.06)m",
+    "mass_scale": [1.0, 1.0],
+    "friction_scale": [1.0, 1.0],
+    "object_xy_half_range_m": 0.06,
+    "target_xy_half_range_m": 0.0
+  },
+  "target_position_random": {
+    "description": "Target position independently jittered +/-0.02m per axis relative to cube+(0,+0.06)m",
+    "mass_scale": [1.0, 1.0],
+    "friction_scale": [1.0, 1.0],
+    "object_xy_half_range_m": 0.04,
+    "target_xy_half_range_m": 0.02
+  },
+  "combined_mild": {
+    "description": "All factors varied moderately",
+    "mass_scale": [0.8, 1.2],
+    "friction_scale": [0.8, 1.2],
+    "object_xy_half_range_m": 0.05,
+    "target_xy_half_range_m": 0.015
+  },
+  "combined_hard": {
+    "description": "All factors varied strongly (OOD stress test, not training distribution)",
+    "mass_scale": [0.6, 1.4],
+    "friction_scale": [0.5, 1.5],
+    "object_xy_half_range_m": 0.06,
+    "target_xy_half_range_m": 0.03
+  }
+}
