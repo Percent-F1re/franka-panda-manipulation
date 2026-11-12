@@ -5,7 +5,7 @@
 ## Highlights / 已验证成果
 
 | Metric |DLS | OSC_POSE |
-|---|---:|---:|
+|---|:---:|:---:|
 | Frozen original SAC, 100 paired episodes, seed 42000 | **84 / 100** | **81 / 100** |
 | Lift events | 100 / 100 | 99 / 100 |
 | Transfer events | 100 / 100 | 99 / 100 |
