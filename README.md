@@ -1,12 +1,10 @@
 # Franka Panda Pick-and-Place — SAC + 6D DLS / OSC in robosuite
 
-**基于 robosuite 自定义 `MujocoEnv` 的 Menagerie Panda 物理抓取、放置与零样本控制器对照研究。**
-
 > Reproducibility note: We use the **original MuJoCo Menagerie Panda model**, not robosuite's default `Lift` Panda robot. In the OSC arm mode, the original seven joint servos are explicitly reconfigured as torque actuators while preserving force limits. The original tendon gripper is unchanged.
 
 ## Highlights / 已验证成果
 
-| Metric | DLS | OSC_POSE |
+| Metric |DLS | OSC_POSE |
 |---|---:|---:|
 | Frozen original SAC, 100 paired episodes, seed 42000 | **84 / 100** | **81 / 100** |
 | Lift events | 100 / 100 | 99 / 100 |
@@ -113,17 +111,21 @@ The frozen SAC policy and DLS/OSC controllers continue running in the original r
 
 ### Architecture
 
+```mermaid
 flowchart TB
-    subgraph WIN["Windows — Simulation"]
+    subgraph WIN["Windows - Simulation"]
         direction TB
         SAC["Frozen SAC Policy"]
         CTRL["DLS / OSC Controller"]
         SIM["robosuite 1.5.2 + MuJoCo"]
         RUN["ros2_demo_runner.py"]
-        SAC --> CTRL --> SIM --> RUN
+
+        SAC --> CTRL
+        CTRL --> SIM
+        SIM --> RUN
     end
 
-    subgraph WSL["WSL2 Ubuntu — ROS 2 Humble"]
+    subgraph WSL["WSL2 Ubuntu - ROS 2 Humble"]
         direction TB
         BR["panda_ros2_bridge"]
         TOP["ROS 2 Topics"]
@@ -142,9 +144,10 @@ flowchart TB
         SRV --> BR
     end
 
-    RUN -->|"UDP telemetry"| BR
-    BR -->|"Episode control"| RUN
-  
+    RUN -->|UDP telemetry| BR
+    BR -->|Episode control| RUN
+```
+
 
 ### Implemented Features
 
