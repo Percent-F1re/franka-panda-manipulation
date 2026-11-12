@@ -113,21 +113,38 @@ The frozen SAC policy and DLS/OSC controllers continue running in the original r
 
 ### Architecture
 
-```mermaid
-flowchart LR
-    A["Frozen SAC Policy"] --> B["DLS / OSC"]
-    B --> C["robosuite + MuJoCo"]
-    C --> D["UDP Telemetry"]
-    D --> E["ROS 2 Bridge"]
-    E --> F["JointState + Task Topics"]
-    F --> G["Joint Adapter"]
-    G --> H["robot_state_publisher"]
-    H --> I["TF2 + RViz2"]
-    F --> J["MarkerArray"]
-    J --> I
-    F --> K["rosbag2"]
-    L["ROS 2 Reset Service"] --> E
-```
+flowchart TB
+    subgraph WIN["Windows — Simulation"]
+        direction TB
+        SAC["Frozen SAC Policy"]
+        CTRL["DLS / OSC Controller"]
+        SIM["robosuite 1.5.2 + MuJoCo"]
+        RUN["ros2_demo_runner.py"]
+        SAC --> CTRL --> SIM --> RUN
+    end
+
+    subgraph WSL["WSL2 Ubuntu — ROS 2 Humble"]
+        direction TB
+        BR["panda_ros2_bridge"]
+        TOP["ROS 2 Topics"]
+        SRV["Reset Episode Service"]
+        AD["Joint Adapter"]
+        RSP["robot_state_publisher"]
+        RV["RViz2"]
+        BAG["rosbag2"]
+
+        BR --> TOP
+        TOP --> AD
+        AD --> RSP
+        RSP -->|TF2| RV
+        TOP -->|MarkerArray| RV
+        TOP --> BAG
+        SRV --> BR
+    end
+
+    RUN -->|"UDP telemetry"| BR
+    BR -->|"Episode control"| RUN
+  
 
 ### Implemented Features
 
