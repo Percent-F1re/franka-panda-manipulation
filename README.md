@@ -105,6 +105,64 @@ Windows run reported: **7 scenarios × 2 controllers × 100 episodes**. The base
 
 Only combined hard shows a robust paired decrease from baseline for both controllers after Bonferroni correction over 12 stress-vs-baseline comparisons. Controller-to-controller success-rate differences are not significant within any scenario. The presented statistics come from the author-reported console summary, pending raw artifacts in the final Release. [Full analysis](results/V3_ROBUSTNESS_RESULTS.md).
 
+## ROS 2 Integration — Panda Digital Twin Visualization
+
+An optional ROS 2 Humble integration layer connects the existing Franka Panda pick-and-place simulation to a ROS 2 visualization and data-recording workflow.
+
+The frozen SAC policy and DLS/OSC controllers continue running in the original robosuite 1.5.2 + MuJoCo simulation on Windows. A UDP telemetry bridge forwards robot and task states to ROS 2 Humble running under WSL2 Ubuntu.
+
+### Architecture
+
+```mermaid
+flowchart LR
+    A["Frozen SAC Policy"] --> B["DLS / OSC"]
+    B --> C["robosuite + MuJoCo"]
+    C --> D["UDP Telemetry"]
+    D --> E["ROS 2 Bridge"]
+    E --> F["JointState + Task Topics"]
+    F --> G["Joint Adapter"]
+    G --> H["robot_state_publisher"]
+    H --> I["TF2 + RViz2"]
+    F --> J["MarkerArray"]
+    J --> I
+    F --> K["rosbag2"]
+    L["ROS 2 Reset Service"] --> E
+```
+
+### Implemented Features
+
+- **ROS 2 communication:** Publishes Panda joint states, end-effector pose, object pose, target pose, SAC actions, and task status.
+- **Service-based episode control:** Starts a simulation episode through `/panda/reset_episode`.
+- **URDF-based visualization:** Displays the complete seven-joint Franka Panda arm and two-finger gripper in RViz2.
+- **TF2 integration:** Converts simulation joint states into Panda URDF joint names and publishes robot link transforms.
+- **Task visualization:** Uses `visualization_msgs/MarkerArray` to display the cube, target, and end-effector trajectory.
+- **rosbag2 recording and playback:** Supports offline replay of DLS and OSC trajectories.
+- **Simulation-time synchronization:** Uses `/clock` and `use_sim_time` to synchronize RViz2 with recorded simulation states.
+
+### ROS 2 Demonstrations — SAC + DLS vs. SAC + OSC
+
+Both demonstrations show the full Franka Panda robot in RViz2, including arm motion, gripper operation, object movement, and end-effector trajectory visualization.
+
+| SAC + DLS — ROS 2 / RViz2 | SAC + OSC — ROS 2 / RViz2 |
+|:---:|:---:|
+| ![Panda SAC DLS ROS 2 demo](assets/demos/panda_ros2_dls.gif) | ![Panda SAC OSC ROS 2 demo](assets/demos/panda_ros2_osc.gif) |
+| [Full MP4 demo](assets/demos/panda_ros2_dls.mp4) | [Full MP4 demo](assets/demos/panda_ros2_osc.mp4) |
+| DLS joint-position control | OSC operational-space torque control |
+
+Both demonstrations visualize the existing SAC policy and low-level controllers through the ROS 2 integration layer. They are visualization examples, not additional benchmark trials.
+
+### Environment
+
+- Windows: Python, robosuite 1.5.2, MuJoCo, Stable-Baselines3
+- WSL2 Ubuntu: ROS 2 Humble
+- Visualization: RViz2, URDF, TF2, MarkerArray
+- Recording: rosbag2
+- Transport: UDP telemetry between Windows and WSL2
+
+**Scope:** This integration demonstrates simulation telemetry, ROS 2 communication, visualization, and replay. It does not constitute real-robot deployment, hardware control, or a new policy-performance evaluation.
+
+For setup instructions and terminal-by-terminal commands, see [ROS 2 Setup and Usage](ros2_ws/README.md).
+
 ## Study limitations
 
 - Only the DLS-trained SAC checkpoint is fixed; OSC `q_cmd` observation dimensions contain a shadow DLS reference for compatibility, not an executed joint-position command.
