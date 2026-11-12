@@ -6,7 +6,7 @@
 
 ## Highlights / 已验证成果
 
-| Metric / 指标 | DLS | OSC_POSE |
+| Metric | DLS | OSC_POSE |
 |---|---:|---:|
 | Frozen original SAC, 100 paired episodes, seed 42000 | **84 / 100** | **81 / 100** |
 | Lift events | 100 / 100 | 99 / 100 |
@@ -71,7 +71,7 @@ Use the user's independently trained **46D/4D single SAC checkpoint** as `<your_
 python compare_dls_vs_osc.py --model <your_original_sac.zip> --controller both --episodes 100 --seed 42000 --post-hold target --out evaluation/controller_seed42000_v2
 ```
 
-## Domain randomization / 鲁棒性实验（V3）
+## Domain randomization 
 
 The `run_robustness.py` script offers 7 predeclared scenarios, preserving the Actor and both controller implementations. The frozen nominal base uses **exactly** the same original XY PRNG as the 84%/81% paired benchmark.
 
